@@ -8,6 +8,7 @@ import store from './state/store.ts'
 import { BrowserRouter, Route, Routes } from 'react-router'
 import Dashboard from './pages/dashboard/Dashboard.tsx'
 import Settings from './pages/settings/Settings.tsx'
+import NotFound from './pages/Error/NotFound.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
