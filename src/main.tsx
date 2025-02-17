@@ -1,12 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.tsx'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import theme from './theme.tsx'
 import { Provider } from 'react-redux'
 import store from './state/store.ts'
 import { BrowserRouter, Route, Routes } from 'react-router'
+import Dashboard from './pages/dashboard/Dashboard.tsx'
+import Settings from './pages/settings/Settings.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -15,7 +16,9 @@ createRoot(document.getElementById('root')!).render(
         <CssBaseline />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<App />} />
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
