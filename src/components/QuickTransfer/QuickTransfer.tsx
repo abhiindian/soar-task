@@ -40,12 +40,11 @@ const QuickTransfer: React.FC<QuickTransferProps> = ({
 
             <form onSubmit={handleSubmit} style={styles.form}>
                 <label style={styles.amountLabel}>
-                    Write Amount
                     <input
                         type="number"
                         value={amount}
                         onChange={(e) => setAmount(parseFloat(e.target.value))}
-                        style={styles.amountInput}
+                        className="amount-input"
                         step="0.01"
                     />
                 </label>

@@ -54,7 +54,7 @@ export default function Dashboard() {
     ];
     return (
         <>
-            <div className="m-2 flex flex-col gap-10 md:flex-row md:gap-10">
+            <div >
                 <CreditCardComponent
                     balance={100.50}
                     cardHolder={'Abhishek Chakravarty'}
@@ -71,12 +71,12 @@ export default function Dashboard() {
                 />
                 <RecentTransactions />
             </div>
-            <div className="m-2 grid grid-cols-2 md:grid-cols-2 gap-10">
+            <div>
                 <WeeklyActivityChart />
                 <PolarChart data={chartData} />
 
             </div>
-            <div className="m-2 grid grid-cols-2 md:grid-cols-2 gap-10">
+            <div >
                 <QuickTransfer
                     users={users}
                     onSend={handleSend}
