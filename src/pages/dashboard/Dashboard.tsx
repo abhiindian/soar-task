@@ -31,11 +31,22 @@ export default function Dashboard() {
     };
 
     const users = [
-        { name: 'Livia Bator', role: 'CEO' },
-        { name: 'Randy Press', role: 'Director' },
-        { name: 'Workman', role: 'Designer' }
+        {
+            name: "Livia Bator",
+            role: "CEO",
+            avatar: "https://via.placeholder.com/48x48?text=L"
+        },
+        {
+            name: "Randy Press",
+            role: "Director",
+            avatar: "https://via.placeholder.com/48x48?text=R"
+        },
+        {
+            name: "Workman",
+            role: "Designer",
+            avatar: "https://via.placeholder.com/48x48?text=W"
+        }
     ];
-
     const handleSend = (amount: number) => {
         console.log('Transferring:', amount);
         // Add your transfer logic here
@@ -80,7 +91,7 @@ export default function Dashboard() {
                 <QuickTransfer
                     users={users}
                     onSend={handleSend}
-                    initialAmount={525.50}
+                    defaultAmount={525.50}
                 />
                 <BalanceHistoryChart data={sampleData} title="My Balance History" />
             </div>

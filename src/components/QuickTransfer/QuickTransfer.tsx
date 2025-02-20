@@ -1,136 +1,72 @@
-import React, { useState } from 'react';
+import { Avatar, Button, TextField, IconButton, FormLabel } from "@mui/material";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import SendIcon from "@mui/icons-material/Send";
+import { Label } from "@mui/icons-material";
 
-interface User {
-    name: string;
-    role: string;
-}
+/**
+ * QuickTransfer Component
+ *
+ * @param {Array}  users         - Array of user objects: [{ name, role, avatar }, ...]
+ * @param {String} defaultAmount - Default amount to show in the input
+ * @param {Function} onSend      - Callback when Send button is clicked
+ */
 
-interface QuickTransferProps {
-    users: User[];
+type QuickTransferProps = {
+    users: { name: string; role: string; avatar: string }[];
     onSend: (amount: number) => void;
-    initialAmount?: number;
+    defaultAmount: number;
 }
 
-const QuickTransfer: React.FC<QuickTransferProps> = ({
-    users,
-    onSend,
-    initialAmount = 0
-}) => {
-    const [amount, setAmount] = useState<number>(initialAmount);
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        onSend(amount);
-    };
-
+const QuickTransfer = ({
+    users = [],
+    defaultAmount = 525.50,
+    onSend = () => { }
+}: QuickTransferProps) => {
     return (
-        <div style={styles.container}>
-            <h2 style={styles.title}>Quick Transfer</h2>
+        <div className="bg-white p-4 rounded-xl shadow-md w-full max-w-md">
+            {/* Title */}
+            <h2 className="text-gray-800 font-semibold text-lg mb-4">Quick Transfer</h2>
 
-            <div style={styles.usersContainer}>
+            {/* User Avatars */}
+            <div className="flex items-center space-x-4 mb-4">
                 {users.map((user, index) => (
-                    <div key={index} style={styles.userCard}>
-                        <div style={styles.userInfo}>
-                            <span style={styles.userName}>{user.name}</span>
-                            <span style={styles.userRole}>{user.role}</span>
-                        </div>
+                    <div key={index} className="flex flex-col items-center">
+                        <Avatar
+                            alt={user.name}
+                            src={user.avatar}
+                            sx={{ width: 48, height: 48 }}
+                        />
+                        <span className="text-sm font-medium mt-1">{user.name}</span>
+                        <span className="text-xs text-gray-500">{user.role}</span>
                     </div>
                 ))}
+
+                {/* Arrow Button */}
+                {/* <IconButton className="border border-gray-300 rounded-full" size="small">
+                    <ArrowForwardIosIcon fontSize="small" />
+                </IconButton> */}
             </div>
 
-            <form onSubmit={handleSubmit} style={styles.form}>
-                <label style={styles.amountLabel}>
-                    <input
-                        type="number"
-                        value={amount}
-                        onChange={(e) => setAmount(parseFloat(e.target.value))}
-                        className="amount-input"
-                        step="0.01"
-                    />
-                </label>
-
-                <button type="submit" style={styles.sendButton}>
+            {/* Amount Input and Send Button */}
+            <div className="flex items-center space-x-2">
+                <FormLabel htmlFor="amount">Write Amount</FormLabel>
+                <TextField
+                    variant="outlined"
+                    size="small"
+                    defaultValue={defaultAmount}
+                    className="flex-1"
+                />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    endIcon={<SendIcon />}
+                    onClick={() => onSend(defaultAmount)}
+                >
                     Send
-                </button>
-            </form>
+                </Button>
+            </div>
         </div>
     );
-};
-
-const styles = {
-    container: {
-        maxWidth: '400px',
-        margin: '20px auto',
-        padding: '25px',
-        backgroundColor: '#ffffff',
-        borderRadius: '12px',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-        fontFamily: 'Arial, sans-serif'
-    },
-    title: {
-        color: '#2d3436',
-        marginBottom: '25px',
-        fontSize: '1.5rem',
-        textAlign: 'center' as const
-    },
-    usersContainer: {
-        marginBottom: '25px',
-        flexDirection: 'row'
-    },
-    userCard: {
-        display: 'flex',
-        alignItems: 'center',
-        padding: '12px',
-        marginBottom: '15px',
-        backgroundColor: '#f8f9fa',
-        borderRadius: '8px',
-        transition: '0.2s ease'
-    },
-    userInfo: {
-        display: 'flex',
-        flexDirection: 'column' as const,
-        marginLeft: '15px'
-    },
-    userName: {
-        fontWeight: '600',
-        color: '#2d3436',
-        fontSize: '0.95rem'
-    },
-    userRole: {
-        color: '#636e72',
-        fontSize: '0.85rem'
-    },
-    form: {
-        display: 'flex',
-        flexDirection: 'column' as const,
-        gap: '15px'
-    },
-    amountLabel: {
-        display: 'flex',
-        flexDirection: 'column' as const,
-        gap: '5px',
-        color: '#2d3436',
-        fontSize: '0.9rem'
-    },
-    amountInput: {
-        padding: '12px',
-        border: '1px solid #dfe6e9',
-        borderRadius: '6px',
-        fontSize: '1rem',
-        outline: 'none',
-        transition: 'border-color 0.2s ease',
-    },
-    sendButton: {
-        padding: '12px',
-        backgroundColor: '#0984e3',
-        color: 'white',
-        border: 'none',
-        borderRadius: '6px',
-        fontSize: '1rem',
-        fontWeight: '600',
-        cursor: 'pointer',
-        transition: 'background-color 0.2s ease'
-    }
 };
 
 export default QuickTransfer;

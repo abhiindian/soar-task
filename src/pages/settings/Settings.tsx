@@ -1,6 +1,10 @@
+import EditProfile from "./EditProfile";
+
 export default function Settings() {
 
     return (
-        <div>Settings</div>
+        <div className="bg-gray-100 p-4">
+            <EditProfile />
+        </div>
     )
 }
