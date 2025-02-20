@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 
 import Dashboard from '../pages/dashboard'
 import Settings from '../pages/settings'
-import NotFound from '../pages/errors/NotFound'
+import { NotFound } from '../pages/errors'
 import { DASHBOARD, SETTINGS } from '../constants/routePath'
 
 
