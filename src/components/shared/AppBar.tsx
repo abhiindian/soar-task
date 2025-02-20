@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { NAV_WIDTH as drawerWidth } from '../../Constants';
+import { NAV_WIDTH as drawerWidth } from '../../Constants/navbar';
 import UserMenu from './UserMenu';
 
 interface AppBarProps extends MuiAppBarProps {
@@ -43,7 +43,7 @@ const AppBar = ({ open }: Props) => {
                 ml: { sm: `${drawerWidth}px` },
             }}>
             <Toolbar>
-                             <div style={{
+                <div style={{
                     flexGrow: 1,
                 }}>
                     <Typography variant="h6" noWrap component="div" sx={{ color: '#343C6A', mt: 1.5 }}>

@@ -5,7 +5,7 @@ import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { USER_MENU as settings } from '../../Constants';
+import { USER_MENU as settings } from '../../Constants/navbar';
 import { useState } from 'react';
 
 

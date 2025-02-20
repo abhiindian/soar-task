@@ -2,8 +2,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from '../components/Layout'
 import { DASHBOARD, SETTINGS } from '../Constants/routePath'
-import Dashboard from '../pages/Dashboard/Dashboard'
-import Settings from '../pages/Settings/Settings'
+import Dashboard from '../pages/Dashboard'
+import Settings from '../pages/Settings'
 import NotFound from '../pages/Errors/NotFound'
 
 
