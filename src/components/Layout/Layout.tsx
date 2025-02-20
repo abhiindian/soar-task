@@ -14,7 +14,7 @@ import { DrawerHeader } from '../shared/SideDrawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import UserMenu from '../shared/UserMenu';
-import { DrawerMenu, DRAWER_MENU } from '../../Constants/navbar';
+import { DrawerMenu, DRAWER_MENU } from '../../constants/navbar';
 
 const drawerWidth = 240;
 

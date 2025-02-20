@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { NAV_WIDTH as drawerWidth, DRAWER_MENU, DrawerMenu } from '../../Constants/navbar';
+import { NAV_WIDTH as drawerWidth, DRAWER_MENU, DrawerMenu } from '../../constants/navbar';
 import { useNavigate } from 'react-router-dom';
 import { Icon, Typography } from '@mui/material';
 import TaskIcon from '@mui/icons-material/Task';
