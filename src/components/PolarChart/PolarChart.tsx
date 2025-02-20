@@ -1,7 +1,19 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import * as d3 from 'd3';
 
-const PolarChart = ({ data, width, height }) => {
+type PolarChartProps = {
+  data: {
+    labels: string[];
+    datasets: {
+      data: number[];
+      backgroundColor: string[];
+    }[];
+  };
+  width?: number;
+  height?: number;
+}
+
+const PolarChart = ({ data, width, height }: PolarChartProps) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
@@ -26,7 +38,7 @@ const PolarChart = ({ data, width, height }) => {
     const colors = data.datasets[0].backgroundColor;
     const numSlices = dataset.length;
     const angleSlice = (2 * Math.PI) / numSlices;
-    const maxValue = d3.max(dataset);
+    const maxValue = d3.max(dataset) || 0;
 
     // Create a scale to map data values to radial lengths
     const radiusScale = d3.scaleLinear().domain([0, maxValue]).range([0, radius]);
@@ -34,7 +46,7 @@ const PolarChart = ({ data, width, height }) => {
     // For each data point, create an arc with:
     // - a constant angular width (angleSlice)
     // - an outer radius proportional to the data value
-    dataset.forEach((d, i) => {
+    dataset.forEach((d: any, i: number) => {
       const startAngle = i * angleSlice;
       const endAngle = (i + 1) * angleSlice;
 
@@ -47,7 +59,7 @@ const PolarChart = ({ data, width, height }) => {
 
       svg
         .append('path')
-        .attr('d', arcGenerator())
+        .attr('d', arcGenerator(d))
         .attr('fill', colors[i])
         .attr('stroke', '#fff')
         .attr('stroke-width', '1px');
@@ -62,13 +74,13 @@ const PolarChart = ({ data, width, height }) => {
   );
 };
 
-const Legend = ({ data }) => {
+const Legend = ({ data }: PolarChartProps) => {
   const labels = data.labels;
   const colors = data.datasets[0].backgroundColor;
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-      {labels.map((label, i) => (
+      {labels.map((label: string, i: number) => (
         <div
           key={i}
           style={{

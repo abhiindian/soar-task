@@ -5,7 +5,7 @@ import Divider from '@mui/material/Divider';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { NAV_WIDTH as drawerWidth, DRAWER_MENU } from '../../Constants';
+import { NAV_WIDTH as drawerWidth, DRAWER_MENU, DrawerMenu } from '../../Constants';
 import { useNavigate } from 'react-router-dom';
 import { Icon, Typography } from '@mui/material';
 import TaskIcon from '@mui/icons-material/Task';
@@ -61,13 +61,13 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 
-type Props = {
+type SideDrawerProps = {
     open: boolean,
     handleDrawerClose: () => void,
-    theme: Theme
 }
 
-const SideDrawer = ({ open, handleDrawerClose, theme }: Props) => {
+const SideDrawer = (sideDrawerProps: SideDrawerProps) => {
+    const { open, handleDrawerClose } = sideDrawerProps;
     const navigate = useNavigate()
     return (
         <Drawer variant="permanent" open={true}>

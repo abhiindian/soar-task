@@ -9,7 +9,12 @@ import {
     Legend,
 } from "recharts";
 
-const BalanceHistoryChart = ({ data, title = "Balance History" }) => {
+type BalanceHistoryChartProps = {
+    data: { month: string; balance: number }[];
+    title?: string;
+};
+
+const BalanceHistoryChart = ({ data, title = "Balance History" }: BalanceHistoryChartProps) => {
     return (
         <div style={{ width: "100%", maxWidth: 600, margin: "0 auto" }}>
             <h3 style={{ textAlign: "center", marginBottom: "1rem" }}>{title}</h3>

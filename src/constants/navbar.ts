@@ -7,9 +7,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import { SvgIconTypeMap } from "@mui/material";
 import { OverridableComponent } from "@mui/material/OverridableComponent";
 
-type DrawerMenu = {
+export type DrawerMenu = {
     name: string
-    icon?: OverridableComponent<SvgIconTypeMap<object, "svg">>
+    icon: OverridableComponent<SvgIconTypeMap<object, "svg">>;
     route: string
 }
 

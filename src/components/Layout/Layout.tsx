@@ -13,8 +13,8 @@ import TaskIcon from '@mui/icons-material/Task';
 import { DrawerHeader } from '../shared/SideDrawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
-import { DRAWER_MENU } from '../../Constants';
 import UserMenu from '../shared/UserMenu';
+import { DrawerMenu, DRAWER_MENU } from '../../Constants';
 
 const drawerWidth = 240;
 
@@ -78,7 +78,7 @@ export default function Layout({ children, window }: React.PropsWithChildren<Pro
                             }}
                         >
                             {/* <icon /> */}
-                            <Icon />
+                            {Icon && <Icon />}
                         </ListItemIcon>
                         <ListItemText primary={text} />
                     </ListItemButton>
@@ -157,7 +157,7 @@ export default function Layout({ children, window }: React.PropsWithChildren<Pro
             </Box>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
-                <Container maxWidth="lg" sx={{ scroll: 'auto' }}>
+                <Container maxWidth="lg" sx={{ scroll: 'auto', backgroundColor: '#F5F7FA' }}>
                     {children}
                 </Container>
             </Box>

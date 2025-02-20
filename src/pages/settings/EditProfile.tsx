@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
     Tabs,
     Tab,
@@ -13,7 +13,7 @@ import EditIcon from "@mui/icons-material/Edit";
 const EditProfile = () => {
     const [tabValue, setTabValue] = useState(0);
 
-    const handleTabChange = (event, newValue) => {
+    const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
         setTabValue(newValue);
     };
 
