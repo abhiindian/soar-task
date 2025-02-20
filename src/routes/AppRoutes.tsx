@@ -1,12 +1,10 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Layout from '../components/Layout'
-
 import Dashboard from '../pages/dashboard'
 import Settings from '../pages/settings'
-import { NotFound } from '../pages/errors'
+import { NotFound } from '../pages/error'
 import { DASHBOARD, SETTINGS } from '../constants/routePath'
-
 
 const AppRoutes = () => {
 
