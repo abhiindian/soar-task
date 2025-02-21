@@ -27,7 +27,7 @@ const CreditCard = (creditCardProps: Readonly<CreditCardProps>) => {
             color: type === 'white' ? '#000' : '#fff',
             borderRadius: '16px',
             padding: '16px',
-            width: '350px',
+            maxWidth: '400px',
         }}>
             <CardContent>
                 <Box display="flex" justifyContent="space-between" mb={2}><Box>

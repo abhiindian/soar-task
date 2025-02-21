@@ -1,12 +1,8 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import {
-    Container, Divider, Drawer, Icon, List,
-    ListItemButton, ListItemIcon, ListItemText,
-    Typography, AppBar,
-    IconButton,
-    Toolbar
+    Box, CssBaseline, Container, Divider, Drawer, Icon, List,
+    ListItemButton, ListItemIcon, ListItemText, Typography, AppBar,
+    IconButton, Toolbar
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import TaskIcon from '@mui/icons-material/Task';
@@ -15,16 +11,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import UserMenu from '../shared/UserMenu';
 import { DrawerMenu, DRAWER_MENU } from '../../constants/navbar';
+import SearchTextField from '../shared/Search';
+import { Settings } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
-
-
-type Props = {
+type LayoutProps = {
     window?: () => Window;
 }
 
-export default function Layout({ children, window }: React.PropsWithChildren<Props>) {
+export default function Layout({ children, window }: React.PropsWithChildren<LayoutProps>) {
 
 
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -98,12 +94,11 @@ export default function Layout({ children, window }: React.PropsWithChildren<Pro
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
                     backgroundColor: 'white',
-                    height: '80px'
+                    height: { sm: '80px', xs: '120px' }
                 }}
             >
                 <Toolbar>
                     <IconButton
-
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
@@ -111,21 +106,29 @@ export default function Layout({ children, window }: React.PropsWithChildren<Pro
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Box style={{
+                    <Box sx={{
                         flexGrow: 1,
+                        display: 'flex',
+                        justifyContent: { sm: 'space-between', xs: 'center' },
+                        flexDirection: { sm: 'row', xs: 'column' },
+                        alignItems: { sm: 'space-between', xs: 'center' },
                     }}>
                         <Typography variant="h6" noWrap component="div" sx={{ color: '#343C6A', mt: 1.5 }}>
                             OVERVIEW
                         </Typography>
+                        <SearchTextField placeholder='Search' sx={{ mr: 2, display: { xs: 'none', sm: 'block' } }} />
                     </Box>
-
+                    <IconButton sx={{ mr: 2, display: { xs: 'none', sm: 'block' } }}>
+                        <Settings />
+                    </IconButton>
                     <UserMenu />
+
                 </Toolbar>
+                <SearchTextField placeholder='Search' sx={{ display: { xs: 'block', sm: 'none' }, alignSelf: 'center', px: 3.5 }} fullWidth />
             </AppBar>
             <Box
                 component="nav"
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-                aria-label="mailbox folders"
             >
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Drawer
@@ -139,7 +142,7 @@ export default function Layout({ children, window }: React.PropsWithChildren<Pro
                     }}
                     sx={{
                         display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        '& .MuiDrawer-paper': { width: drawerWidth },
                     }}
                 >
                     {drawer}
@@ -148,16 +151,19 @@ export default function Layout({ children, window }: React.PropsWithChildren<Pro
                     variant="permanent"
                     sx={{
                         display: { xs: 'none', sm: 'block' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        '& .MuiDrawer-paper': { width: drawerWidth },
                     }}
                     open
                 >
                     {drawer}
                 </Drawer>
             </Box>
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Box component="main" sx={{ flexGrow: 1, margin: 0 }}>
                 <DrawerHeader />
-                <Container maxWidth="lg" sx={{ scroll: 'auto', backgroundColor: '#F5F7FA' }}>
+                <Container maxWidth={false} sx={{
+                    backgroundColor: '#F5F7FA',
+                    overflow: 'auto',
+                }}>
                     {children}
                 </Container>
             </Box>

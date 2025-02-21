@@ -16,7 +16,7 @@ type BalanceHistoryChartProps = {
 
 const BalanceHistoryChart = ({ data, title = "Balance History" }: BalanceHistoryChartProps) => {
     return (
-        <div style={{ width: "100%", maxWidth: 600, margin: "0 auto" }}>
+        <div style={{ width: "100%", margin: "0 auto" }}>
             <h3 style={{ textAlign: "center", marginBottom: "1rem" }}>{title}</h3>
             {/* ResponsiveContainer makes the chart scale with its parent container */}
             <ResponsiveContainer width="100%" height={300}>

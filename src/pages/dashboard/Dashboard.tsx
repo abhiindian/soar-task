@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import BalanceHistoryChart from "../../components/BalanceHistoryChart";
 import CreditCardComponent from "../../components/CreditCardComponent";
 import PolarChart from "../../components/PolarChart";
@@ -64,7 +65,7 @@ export default function Dashboard() {
         { month: "Jan", balance: 600 },
     ];
     return (
-        <>
+        <Box>
             <div >
                 <CreditCardComponent
                     balance={100.50}
@@ -95,6 +96,6 @@ export default function Dashboard() {
                 />
                 <BalanceHistoryChart data={sampleData} title="My Balance History" />
             </div>
-        </>
+        </Box>
     )
 }
