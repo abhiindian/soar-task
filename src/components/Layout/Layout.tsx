@@ -102,7 +102,7 @@ export default function Layout({ children, window }: React.PropsWithChildren<Lay
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mt: 1.5, color: "#343C6A", border: 'none', display: { sm: 'none' } }}
+                        sx={{ ml: 2, mt: 1.5, color: "#343C6A", border: 'none', display: { sm: 'none' } }}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -159,10 +159,10 @@ export default function Layout({ children, window }: React.PropsWithChildren<Lay
                 </Drawer>
             </Box>
             <Box component="main" sx={{ flexGrow: 1, margin: 0 }}>
-                <DrawerHeader />
+                <Box sx={{ height: { sm: '80px', xs: '120px' } }} />
                 <Container maxWidth={false} sx={{
                     backgroundColor: '#F5F7FA',
-                    overflow: 'auto',
+                    overflowY: 'auto',
                     py: 3
                 }}>
                     {children}

@@ -11,15 +11,12 @@ import {
 
 type BalanceHistoryChartProps = {
     data: { month: string; balance: number }[];
-    title?: string;
 };
 
-const BalanceHistoryChart = ({ data, title = "Balance History" }: BalanceHistoryChartProps) => {
+const BalanceHistoryChart = ({ data }: BalanceHistoryChartProps) => {
     return (
-        <div style={{ width: "100%", margin: "0 auto" }}>
-            <h3 style={{ textAlign: "center", marginBottom: "1rem" }}>{title}</h3>
-            {/* ResponsiveContainer makes the chart scale with its parent container */}
-            <ResponsiveContainer width="100%" height={300}>
+        <div style={{ width: "100%", margin: "0 auto", backgroundColor: 'white', borderRadius: '16px', padding: '16px', boxShadow: 'var(--Paper-shadow)' }}>
+            <ResponsiveContainer width="100%" height={232}>
                 <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                     {/* Gradient for the area fill */}
                     <defs>

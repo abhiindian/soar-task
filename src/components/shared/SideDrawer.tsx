@@ -31,15 +31,15 @@ const closedMixin = (theme: Theme): CSSObject => ({
     },
 });
 
-export const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: theme.spacing(0, 1),
+export const DrawerHeader = styled('div')`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: ${({ theme }) => theme.spacing(0, 1)};
     // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    height: '80px'
-}));
+    ${({ theme }) => theme.mixins.toolbar};
+    height: ${({ theme }) => theme.breakpoints.down('sm') ? '80px' : '120px'};
+`;
 
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(

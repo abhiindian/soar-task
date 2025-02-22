@@ -21,8 +21,8 @@ const PolarChart = ({ data, width, height }: PolarChartProps) => {
     d3.select(svgRef.current).selectAll('*').remove();
 
     // Define dimensions
-    const svgWidth = width || 300;
-    const svgHeight = height || 300;
+    const svgWidth = width ?? 300;
+    const svgHeight = height ?? 300;
     const radius = Math.min(svgWidth, svgHeight) / 2;
 
     // Create and center the SVG group
@@ -30,6 +30,7 @@ const PolarChart = ({ data, width, height }: PolarChartProps) => {
       .select(svgRef.current)
       .attr('width', svgWidth)
       .attr('height', svgHeight)
+      .attr('background-color', 'white')
       .append('g')
       .attr('transform', `translate(${svgWidth / 2}, ${svgHeight / 2})`);
 
@@ -38,7 +39,7 @@ const PolarChart = ({ data, width, height }: PolarChartProps) => {
     const colors = data.datasets[0].backgroundColor;
     const numSlices = dataset.length;
     const angleSlice = (2 * Math.PI) / numSlices;
-    const maxValue = d3.max(dataset) || 0;
+    const maxValue = d3.max(dataset) ?? 0;
 
     // Create a scale to map data values to radial lengths
     const radiusScale = d3.scaleLinear().domain([0, maxValue]).range([0, radius]);
@@ -67,7 +68,15 @@ const PolarChart = ({ data, width, height }: PolarChartProps) => {
   }, [data, width, height]);
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      backgroundColor: 'white',
+      borderRadius: '16px',
+      padding: '16px',
+      boxShadow: 'var(--Paper-shadow)'
+    }}>
       <svg ref={svgRef}></svg>
       <Legend data={data} />
     </div>
@@ -106,15 +115,6 @@ const Legend = ({ data }: PolarChartProps) => {
 
 // Default props matching the example file
 PolarChart.defaultProps = {
-  data: {
-    labels: ['Entertainment', 'Bill Expense', 'Investment', 'Others'],
-    datasets: [
-      {
-        data: [30, 15, 20, 35],
-        backgroundColor: ['#2A2E5B', '#F47C25', '#1DA584', '#9B9B9B'],
-      },
-    ],
-  },
   width: 300,
   height: 300,
 };

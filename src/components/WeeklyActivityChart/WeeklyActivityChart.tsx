@@ -47,8 +47,11 @@ const WeeklyActivityChart = () => {
     }, []);
 
     return (
-        <div>
-            <canvas ref={chartRef} className="p-4 bg-white rounded-2xl shadow-lg" />
+        <div className="p-4 bg-white rounded-2xl shadow-lg" style={{
+            height: '360px',
+            borderRadius: '16px', padding: '16px', boxShadow: 'var(--Paper-shadow)'
+        }}>
+            <canvas ref={chartRef} />
         </div>
     );
 };

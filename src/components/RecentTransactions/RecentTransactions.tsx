@@ -1,5 +1,5 @@
 
-import { Card, CardContent, CardHeader } from "@mui/material";
+import { Card, CardContent } from "@mui/material";
 
 import TransactionRow from "./TransactionRow";
 import { CreditCard, Payment, Person } from "@mui/icons-material";
@@ -28,19 +28,12 @@ function RecentTransactions() {
             amountColor: "text-green-500",
         },
     ];
-    
+
 
 
     return (
-        <Card className="max-w-sm w-full rounded-md shadow-md">
-            <CardHeader
-                title="Recent Transaction"
-                classes={{
-                    title: "text-lg font-semibold",
-                }}
-                className="pb-0"
-            />
-            <CardContent className="pt-2">
+        <Card className="rounded-md shadow-md " sx={{ borderRadius: '16px', height: '250px' }}>
+            <CardContent className="my-4">
                 {transactions.map((tx, index) => (
                     <TransactionRow
                         key={index}

@@ -16,18 +16,20 @@ type CreditCardProps = {
     validThru: string,
     cardNumber: string;
     type?: 'white' | 'black'
+    flex: number;
 }
 
 
 const CreditCard = (creditCardProps: Readonly<CreditCardProps>) => {
-    const { balance, cardHolder, validThru, cardNumber, type = 'white' } = creditCardProps;
+    const { balance, cardHolder, validThru, cardNumber, type = 'white', flex } = creditCardProps;
     return (
         <Card sx={{
             background: type === 'white' ? 'white' : 'linear-gradient(135deg, #3c3c4a, #2c2c38)',
             color: type === 'white' ? '#000' : '#fff',
             borderRadius: '16px',
-            padding: '16px',
-            maxWidth: '400px',
+            height: '250px',
+            minWidth: '350px',
+            flex: { sm: flex, xs: 4 }
         }}>
             <CardContent>
                 <Box display="flex" justifyContent="space-between" mb={2}><Box>

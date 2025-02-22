@@ -1,3 +1,3 @@
-import CardWrapper from "./CardWrapper";
+import CardWrapper from "./LargeCardWrapper";
 
 export default CardWrapper;
