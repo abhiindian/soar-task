@@ -121,7 +121,7 @@ export default function Dashboard() {
                     <LargeCardWrapper title={"Quick Transfer"} flex={1}>
                         <QuickTransfer users={users} onSend={handleSend} defaultAmount={25.50} />
                     </LargeCardWrapper>
-                    <SmallCardWrapper title={"Expense Statistics"} flex={2}>
+                    <SmallCardWrapper title={"Balance History"} flex={2}>
                         <BalanceHistoryChart data={balanceHistory} />
                     </SmallCardWrapper>
                 </Box>
@@ -171,10 +171,10 @@ export default function Dashboard() {
                 <SmallCardWrapper title={"Expense Statistics"} flex={1}>
                     <PolarChart data={chartData} height={270} />
                 </SmallCardWrapper>
-                <SmallCardWrapper title={"Weekly Activity"} flex={1}>
-                    <WeeklyActivityChart />
+                <SmallCardWrapper title={"Quick Transfer"} flex={1}>
+                    <QuickTransfer users={users} onSend={handleSend} defaultAmount={25.50} />
                 </SmallCardWrapper>
-                <SmallCardWrapper title={"Expense Statistics"} flex={1}>
+                <SmallCardWrapper title={"Balance History"} flex={1}>
                     <PolarChart data={chartData} height={270} />
                 </SmallCardWrapper>
             </Box >
