@@ -67,7 +67,10 @@ export default function Dashboard() {
     ];
     return (
         <>
-            <Box sx={{ display: { xs: 'none', sm: 'block' } }} >
+            <Box sx={{
+                display: { xs: 'none', sm: 'block' },
+                maxWidth: '82vw',
+            }} >
                 <Box sx={{
                     display: 'flex',
                     gap: '1rem',

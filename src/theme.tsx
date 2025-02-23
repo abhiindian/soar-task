@@ -9,6 +9,9 @@ const theme = createTheme({
         "fontWeightRegular": 400,
         "fontWeightMedium": 500
     },
+    palette: {
+        primary: { main: '#000000' }
+    },
     cssVariables: true
 });
 

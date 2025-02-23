@@ -1,7 +1,4 @@
-import { useState } from "react";
 import {
-    Tabs,
-    Tab,
     Box,
     Avatar,
     IconButton,
@@ -9,127 +6,217 @@ import {
     Button
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import './EditProfile.css';
 
 const EditProfile = () => {
-    const [tabValue, setTabValue] = useState(0);
-
-    const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
-        setTabValue(newValue);
-    };
 
     return (
-        <Box className="p-4 bg-white rounded-md shadow-md max-w-4xl mx-auto">
-            {/* Top Tabs */}
-            <Tabs
-                value={tabValue}
-                onChange={handleTabChange}
-                className="mb-4"
-                textColor="primary"
-                indicatorColor="primary"
-            >
-                <Tab label="Edit Profile" />
-                <Tab label="Preferences" />
-                <Tab label="Security" />
-            </Tabs>
+        <>
+            <Box className="flex mt-4" sx={{ flexDirection: { xs: 'column', sm: 'row' } }}>
+                <Box className="flex flex-col items-center mb-6 flex-1">
+                    <Box className="relative">
+                        <Avatar
 
-            {/* Edit Profile Tab */}
-            {tabValue === 0 && (
-                <Box>
-                    {/* Avatar + Name Fields */}
-                    <Box className="flex flex-col items-center mb-6">
-                        <Box className="relative">
-                            <Avatar
-                                src="https://via.placeholder.com/80"
-                                alt="Profile Picture"
-                                sx={{ width: 80, height: 80 }}
-                            />
-                            <IconButton
-                                className="absolute bottom-0 right-0"
-                                size="small"
-                                color="primary"
-                            >
-                                <EditIcon fontSize="small" />
-                            </IconButton>
-                        </Box>
-
-                        <Box className="w-full sm:ml-6 mt-4 sm:mt-0">
-                            <TextField
-                                label="Your Name"
-                                variant="outlined"
-                                size="small"
-                                fullWidth
-                                className="mb-4"
-                            />
-                            <TextField
-                                label="User Name"
-                                variant="outlined"
-                                size="small"
-                                fullWidth
-                            />
-                        </Box>
+                            alt="Profile Picture"
+                            sx={{ width: 98, height: 98 }}
+                        />
+                        <IconButton
+                            sx={{
+                                position: 'absolute',
+                                right: 0,
+                                bottom: 0,
+                                backgroundColor: 'black',
+                                color: 'white'
+                            }}
+                            size="small"
+                            color="primary"
+                            disableRipple={true}
+                        >
+                            <EditIcon fontSize="small" />
+                        </IconButton>
                     </Box>
-
-                    {/* Form Fields in a Responsive Grid */}
-                    <Box className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <TextField label="Email" variant="outlined" size="small" fullWidth />
+                </Box>
+                {/* Form Fields in a Responsive Grid */}
+                <Box className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 flex-3">
+                    <Box className="mb-2">
+                        <span className="text-label-form">Your Name</span>
                         <TextField
-                            label="Password"
+                            InputProps={{
+                                style: {
+                                    background: '#ffffff',
+                                    border: '1px solid #dfeaf2',
+                                    borderRadius: '15px'
+                                }
+                            }}
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                        />
+                    </Box>
+                    <Box className="mb-2">
+                        <span className="text-label-form">User Name</span>
+                        <TextField
+                            InputProps={{
+                                style: {
+                                    background: '#ffffff',
+                                    border: '1px solid #dfeaf2',
+                                    borderRadius: '15px'
+                                }
+                            }}
+                            className="input-form"
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                        />
+                    </Box>
+                    <Box>
+                        <span className="text-label-form">Email</span>
+                        <TextField
+                            InputProps={{
+                                style: {
+                                    background: '#ffffff',
+                                    border: '1px solid #dfeaf2',
+                                    borderRadius: '15px'
+                                }
+                            }}
+                            className="input-form"
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                        />
+                    </Box>
+                    <Box>
+                        <span className="text-label-form">Password</span>
+                        <TextField
+                            InputProps={{
+                                style: {
+                                    background: '#ffffff',
+                                    border: '1px solid #dfeaf2',
+                                    borderRadius: '15px'
+                                }
+                            }}
+                            className="input-form"
                             variant="outlined"
                             size="small"
                             type="password"
                             fullWidth
                         />
-                        <TextField
-                            label="Date of Birth"
-                            variant="outlined"
-                            size="small"
-                            fullWidth
-                        />
-                        <TextField
-                            label="Present Address"
-                            variant="outlined"
-                            size="small"
-                            fullWidth
-                        />
-                        <TextField
-                            label="Permanent Address"
-                            variant="outlined"
-                            size="small"
-                            fullWidth
-                        />
-                        <TextField label="City" variant="outlined" size="small" fullWidth />
-                        <TextField
-                            label="Postal Code"
-                            variant="outlined"
-                            size="small"
-                            fullWidth
-                        />
-                        <TextField label="Country" variant="outlined" size="small" fullWidth />
                     </Box>
-
-                    {/* Save Button */}
-                    <Button variant="contained" color="primary">
-                        Save
-                    </Button>
+                    <Box>
+                        <span className="text-label-form">Date of Birth</span>
+                        <TextField
+                            InputProps={{
+                                style: {
+                                    background: '#ffffff',
+                                    border: '1px solid #dfeaf2',
+                                    borderRadius: '15px'
+                                }
+                            }}
+                            className="input-form"
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                        />
+                    </Box>
+                    <Box>
+                        <span className="text-label-form">Present Address</span>
+                        <TextField
+                            InputProps={{
+                                style: {
+                                    background: '#ffffff',
+                                    border: '1px solid #dfeaf2',
+                                    borderRadius: '15px'
+                                }
+                            }}
+                            className="input-form"
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                        />
+                    </Box>
+                    <Box>
+                        <span className="text-label-form">Permanent Address</span>
+                        <TextField
+                            InputProps={{
+                                style: {
+                                    background: '#ffffff',
+                                    border: '1px solid #dfeaf2',
+                                    borderRadius: '15px'
+                                }
+                            }}
+                            className="input-form"
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                        />
+                    </Box>
+                    <Box>
+                        <span className="text-label-form">City</span>
+                        <TextField
+                            InputProps={{
+                                style: {
+                                    background: '#ffffff',
+                                    border: '1px solid #dfeaf2',
+                                    borderRadius: '15px'
+                                }
+                            }}
+                            className="input-form"
+                            variant="outlined"
+                            size="small"
+                            fullWidth />
+                    </Box>
+                    <Box>
+                        <span className="text-label-form">Postal Code</span>
+                        <TextField
+                            InputProps={{
+                                style: {
+                                    background: '#ffffff',
+                                    border: '1px solid #dfeaf2',
+                                    borderRadius: '15px'
+                                }
+                            }}
+                            className="input-form"
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                        />
+                    </Box>
+                    <Box>
+                        <span className="text-label-form">Country</span>
+                        <TextField
+                            InputProps={{
+                                style: {
+                                    background: '#ffffff',
+                                    border: '1px solid #dfeaf2',
+                                    borderRadius: '15px'
+                                }
+                            }}
+                            className="input-form"
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                        />
+                    </Box>
                 </Box>
-            )}
 
-            {/* Preferences Tab */}
-            {tabValue === 1 && (
-                <Box>
-                    <h3 className="text-lg font-medium mb-2">Preferences</h3>
-                    <p>Preferences content goes here...</p>
-                </Box>
-            )}
 
-            {/* Security Tab */}
-            {tabValue === 2 && (
-                <Box>
-                    <h3 className="text-lg font-medium mb-2">Security</h3>
-                    <p>Security content goes here...</p>
-                </Box>
-            )}
-        </Box>
+            </Box>
+            <Box className="flex flex-row justify-end">
+
+                <Button
+                    variant="contained"
+                    color="primary"
+                    className="mr-2 w-32"
+                    sx={{
+                        borderRadius: '16px',
+                        backgroundColor: 'black',
+                        width: { xs: '100%', sm: '190px' }
+                    }}
+                >
+                    Save
+                </Button>
+            </Box >
+        </>
     );
 };
 
