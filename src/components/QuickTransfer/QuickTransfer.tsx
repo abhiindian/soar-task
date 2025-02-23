@@ -1,6 +1,5 @@
 import { Avatar, Button, FormLabel, InputAdornment, OutlinedInput } from "@mui/material";
-import SendIcon from "@mui/icons-material/Send";
-
+import VectorIcon from "../../assets/icons/VectorIcon";
 /**
  * QuickTransfer Component
  *
@@ -52,7 +51,7 @@ const QuickTransfer = ({
                     sx={{ position: 'absolute', right: '0', borderRadius: '16px', backgroundColor: 'black' }}
                     variant="contained"
                     color="primary"
-                    endIcon={<SendIcon />}
+                    endIcon={<VectorIcon />}
                     onClick={() => onSend(defaultAmount)}
                 >
                     Send

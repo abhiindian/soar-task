@@ -1,6 +1,8 @@
 
+
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
+import SearchIcon from '@mui/icons-material/Search';
 
 const PilledTextField = styled(TextField)(({ theme }) => ({
     // Remove label transform so it doesn't shrink to the top
@@ -37,7 +39,11 @@ const PilledTextField = styled(TextField)(({ theme }) => ({
 type SearchTextFieldProps = {} & TextFieldProps;
 
 const SearchTextField = (searchTextFieldProps: SearchTextFieldProps) => {
-    return <PilledTextField {...searchTextFieldProps} variant="outlined" />;
+    return <PilledTextField
+        variant="outlined"
+        InputProps={{ startAdornment: <SearchIcon /> }}
+        {...searchTextFieldProps}
+    />;
 }
 
 export default SearchTextField;

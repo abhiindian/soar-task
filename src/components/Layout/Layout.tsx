@@ -12,7 +12,7 @@ import { useState } from 'react';
 import UserMenu from '../shared/UserMenu';
 import { DrawerMenu, DRAWER_MENU } from '../../constants/navbar';
 import SearchTextField from '../shared/Search';
-import { Settings } from '@mui/icons-material';
+import { Notifications, Settings } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
@@ -116,15 +116,17 @@ export default function Layout({ children, window }: React.PropsWithChildren<Lay
                         <Typography variant="h6" noWrap component="div" sx={{ color: '#343C6A', mt: 1.5 }}>
                             OVERVIEW
                         </Typography>
-                        <SearchTextField placeholder='Search' sx={{ mr: 2, display: { xs: 'none', sm: 'block' } }} />
+                        <SearchTextField placeholder='Search for Something' sx={{ mr: 2, display: { xs: 'none', sm: 'block' } }} />
                     </Box>
-                    <IconButton sx={{ mr: 2, display: { xs: 'none', sm: 'block' } }}>
+                    <IconButton sx={{ mr: 3, display: { xs: 'none', sm: 'block' } }} disableRipple={true}>
                         <Settings />
                     </IconButton>
+                    <IconButton sx={{ mr: 3, display: { xs: 'none', sm: 'block' } }} disableRipple={true}>
+                        <Notifications />
+                    </IconButton>
                     <UserMenu />
-
                 </Toolbar>
-                <SearchTextField placeholder='Search' sx={{ display: { xs: 'block', sm: 'none' }, alignSelf: 'center', px: 3.5 }} fullWidth />
+                <SearchTextField placeholder='Search for Something' sx={{ display: { xs: 'block', sm: 'none' }, alignSelf: 'center', px: 3.5 }} fullWidth />
             </AppBar>
             <Box
                 component="nav"
