@@ -16,15 +16,14 @@ import { Notifications, Settings } from '@mui/icons-material';
 
 const drawerWidth = 240;
 
-type LayoutProps = {
-    window?: () => Window;
-}
+type LayoutProps = object;
 
-export default function Layout({ children, window }: React.PropsWithChildren<LayoutProps>) {
+export default function Layout({ children }: React.PropsWithChildren<LayoutProps>) {
 
 
     const [mobileOpen, setMobileOpen] = useState(false);
     const [isClosing, setIsClosing] = useState(false);
+    const [activeMenu, setActiveMenu] = useState<string>('Dashboard');
 
     const navigate = useNavigate();
 
@@ -37,23 +36,32 @@ export default function Layout({ children, window }: React.PropsWithChildren<Lay
         setIsClosing(false);
     };
 
-    const handleDrawerToggle = () => {
+    const handleDrawerToggle = (text: string) => {
         if (!isClosing) {
             setMobileOpen(!mobileOpen);
         }
+        setActiveMenu(text);
     };
 
     const drawer = (
         <>
             <DrawerHeader >
                 <Icon component={TaskIcon} sx={{ color: 'black', mr: 1 }} />
-                <Typography className='bold' variant='h6' sx={{ color: '#343C6A' }}>
+                <Typography component='span' sx={{
+                    color: '#343C6A',
+                    fontFamily: 'Inter',
+                    fontStyle: ' normal',
+                    fontWeight: 600,
+                    fontSize: '20px',
+                    lineHeight: '30px',
+                    mt: 0.25
+                }}>
                     SOAR TASK
                 </Typography>
             </DrawerHeader>
             <Divider />
             <List>
-                {DRAWER_MENU.map(({ name: text, route, icon: Icon }: DrawerMenu) => (
+                {DRAWER_MENU.map(({ name: text, route, icon: Icon, disabled }: DrawerMenu) => (
                     <ListItemButton
                         key={text}
                         sx={{
@@ -62,9 +70,13 @@ export default function Layout({ children, window }: React.PropsWithChildren<Lay
                             px: 2.5,
                         }}
                         onClick={() => {
-                            handleDrawerToggle()
-                            navigate(route)
+                            if (activeMenu !== text) {
+                                handleDrawerToggle(text);
+                                navigate(route);
+                            }
                         }}
+                        disabled={disabled}
+                        selected={activeMenu === text}
                     >
                         <ListItemIcon
                             sx={{
@@ -83,7 +95,7 @@ export default function Layout({ children, window }: React.PropsWithChildren<Lay
 
         </>)
 
-    const container = window !== undefined ? () => window().document.body : undefined;
+    const container = window !== undefined ? () => window.document.body : undefined;
 
     return (
         <Box sx={{ display: 'flex' }} >
@@ -113,7 +125,7 @@ export default function Layout({ children, window }: React.PropsWithChildren<Lay
                         flexDirection: { sm: 'row', xs: 'column' },
                         alignItems: { sm: 'space-between', xs: 'center' },
                     }}>
-                        <Typography variant="h6" noWrap component="div" sx={{ color: '#343C6A', mt: 1.5 }}>
+                        <Typography variant="h6" noWrap component="div" sx={{ color: '#343C6A', mt: 1.75 }}>
                             OVERVIEW
                         </Typography>
                         <SearchTextField placeholder='Search for Something' sx={{ mr: 2, display: { xs: 'none', sm: 'block' } }} />

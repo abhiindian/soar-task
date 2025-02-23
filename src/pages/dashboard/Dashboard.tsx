@@ -119,7 +119,7 @@ export default function Dashboard() {
                 <Box sx={{
                     display: 'flex',
                     gap: '1rem',
-                    mb: 4
+                    mb: 2
                 }}>
                     <LargeCardWrapper title={"Quick Transfer"} flex={1}>
                         <QuickTransfer users={users} onSend={handleSend} defaultAmount={25.50} />

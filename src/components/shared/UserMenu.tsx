@@ -22,7 +22,7 @@ const UserMenu = () => {
     };
 
     return (
-        <Box sx={{ flexGrow: 0, mr: 2 }}>
+        <Box sx={{ flexGrow: 0, mr: 2, mt: { xs: 1, sm: 0 } }}>
             <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar alt="User" src={''} />
