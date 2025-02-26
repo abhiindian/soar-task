@@ -17,6 +17,7 @@ const PolarChart = ({ data, width, height }: PolarChartProps) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
+    if (data?.datasets.length === 0) return;
     // Remove any existing content before rendering the chart
     d3.select(svgRef.current).selectAll('*').remove();
 
@@ -35,8 +36,8 @@ const PolarChart = ({ data, width, height }: PolarChartProps) => {
       .attr('transform', `translate(${svgWidth / 2}, ${svgHeight / 2})`);
 
     // Extract dataset and colors from the provided data
-    const dataset = data.datasets[0].data;
-    const colors = data.datasets[0].backgroundColor;
+    const dataset = data?.datasets[0]?.data ?? 1;
+    const colors = data?.datasets[0]?.backgroundColor ?? 'white';
     const numSlices = dataset.length;
     const angleSlice = (2 * Math.PI) / numSlices;
     const maxValue = d3.max(dataset) ?? 0;
@@ -84,8 +85,9 @@ const PolarChart = ({ data, width, height }: PolarChartProps) => {
 };
 
 const Legend = ({ data }: PolarChartProps) => {
+
   const labels = data.labels;
-  const colors = data.datasets[0].backgroundColor;
+  const colors = data?.datasets[0]?.backgroundColor;
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>

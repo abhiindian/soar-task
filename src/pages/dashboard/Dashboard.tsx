@@ -2,71 +2,37 @@ import CreditCardComponent from "../../components/CreditCardComponent";
 import RecentTransactions from "../../components/RecentTransactions";
 import LargeCardWrapper from "../../components/CardWrapper/LargeCardWrapper";
 import SmallCardWrapper from "../../components/CardWrapper/SmallCardWrapper";
-import { Box } from "@mui/material";
+import { Backdrop, Box, CircularProgress } from "@mui/material";
 import WeeklyActivityChart from "../../components/WeeklyActivityChart";
 import PolarChart from "../../components/PolarChart";
 import QuickTransfer from "../../components/QuickTransfer";
 import BalanceHistoryChart from "../../components/BalanceHistoryChart";
+import { useEffect } from "react";
+import { fetchDashboardDetails } from "./state";
+import { useAppDispatch, useAppSelector } from "../../state/hook";
+import { RootState } from "../../state/store";
 
 export default function Dashboard() {
+    const { loading, expenseStatistics, balanceHistory, quickTransferUsers } = useAppSelector((state: RootState) => state.dashboard); // Selecting the dashboard state from the store   
+    const dispatch = useAppDispatch();    // Dispatch function to dispatch actions to the store
 
-    const chartData = {
-        labels: ['Entertainment', 'Bill Expense', 'Investment', 'Others'],
-        datasets: [
-            {
-                label: 'Expenses',
-                data: [30, 15, 20, 35],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 206, 86, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                ],
-                borderWidth: 1,
-            },
-        ],
-    };
+    useEffect(() => {
+        dispatch(fetchDashboardDetails()); // Dispatching the fetchDashboardDetails action
+    }, [dispatch]);
 
-    const users = [
-        {
-            name: "Livia Bator",
-            role: "CEO",
-            avatar: "https://via.placeholder.com/48x48?text=L"
-        },
-        {
-            name: "Randy Press",
-            role: "Director",
-            avatar: "https://via.placeholder.com/48x48?text=R"
-        },
-        {
-            name: "Workman",
-            role: "Designer",
-            avatar: "https://via.placeholder.com/48x48?text=W"
-        }
-    ];
+
     const handleSend = (amount: number) => {
         console.log('Transferring:', amount);
     };
 
-
-
-    const balanceHistory = [
-        { month: "Jul", balance: 200 },
-        { month: "Aug", balance: 400 },
-        { month: "Sep", balance: 350 },
-        { month: "Oct", balance: 750 },
-        { month: "Nov", balance: 500 },
-        { month: "Dec", balance: 650 },
-        { month: "Jan", balance: 600 },
-    ];
     return (
         <>
+            <Backdrop
+                sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1 })}
+                open={loading}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
             <Box sx={{
                 display: { xs: 'none', sm: 'block' },
                 maxWidth: '82vw',
@@ -113,7 +79,7 @@ export default function Dashboard() {
                         <WeeklyActivityChart />
                     </LargeCardWrapper>
                     <SmallCardWrapper title={"Expense Statistics"} flex={1}>
-                        <PolarChart data={chartData} height={270} />
+                        <PolarChart data={expenseStatistics} height={270} />
                     </SmallCardWrapper>
                 </Box>
                 <Box sx={{
@@ -122,7 +88,7 @@ export default function Dashboard() {
                     mb: 2
                 }}>
                     <LargeCardWrapper title={"Quick Transfer"} flex={1}>
-                        <QuickTransfer users={users} onSend={handleSend} defaultAmount={25.50} />
+                        <QuickTransfer users={quickTransferUsers} onSend={handleSend} defaultAmount={25.50} />
                     </LargeCardWrapper>
                     <SmallCardWrapper title={"Balance History"} flex={2}>
                         <BalanceHistoryChart data={balanceHistory} />
@@ -172,13 +138,13 @@ export default function Dashboard() {
                     <WeeklyActivityChart />
                 </SmallCardWrapper>
                 <SmallCardWrapper title={"Expense Statistics"} flex={1}>
-                    <PolarChart data={chartData} height={270} />
+                    <PolarChart data={expenseStatistics} height={270} />
                 </SmallCardWrapper>
                 <SmallCardWrapper title={"Quick Transfer"} flex={1}>
-                    <QuickTransfer users={users} onSend={handleSend} defaultAmount={25.50} />
+                    <QuickTransfer users={quickTransferUsers} onSend={handleSend} defaultAmount={25.50} />
                 </SmallCardWrapper>
                 <SmallCardWrapper title={"Balance History"} flex={1}>
-                    <PolarChart data={chartData} height={270} />
+                    <BalanceHistoryChart data={balanceHistory} />
                 </SmallCardWrapper>
             </Box >
         </>
