@@ -1,14 +1,13 @@
-import { CircularProgress, Typography } from '@mui/material';
+import { Backdrop, CircularProgress } from '@mui/material';
 
 const Loading = () => {
     return (
-        <div data-testid="loading-container" className='loading'>
-            <div className="loading-box">
-                <CircularProgress />
-                <Typography variant="h5">Loading...</Typography>
-            </div>
-
-        </div>
+        <Backdrop
+            sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1 })}
+            open={true}
+        >
+            <CircularProgress color="inherit" />
+        </Backdrop>
     )
 }
 

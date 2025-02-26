@@ -42,7 +42,7 @@ export default function Dashboard() {
                     gap: '1rem',
                     mb: 4
                 }}>
-                    <LargeCardWrapper title={"My Cards"} flex={2}>
+                    <LargeCardWrapper title={"My Cards"} flex={2} subtitle="See All">
                         <Box sx={{
                             display: 'flex',
                             gap: '1rem',
