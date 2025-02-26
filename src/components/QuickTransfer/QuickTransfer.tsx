@@ -20,7 +20,7 @@ const QuickTransfer = ({
     onSend = () => { }
 }: QuickTransferProps) => {
     return (
-        <div className="bg-white p-4 rounded-xl shadow-md w-full max-w-md" style={{ height: '265px' }}>
+        <div className="bg-white p-4 rounded-xl shadow-md w-full" style={{ height: '265px' }}>
             <div className="flex items-center justify-around h-40 overflow-x-auto space-x-4">
                 {users.map((user, index) => (
                     <div key={index} className="flex flex-col items-center">

@@ -10,7 +10,7 @@ type LargeCardWrapperProps = {
 export default function LargeCardWrapper(cardWrapperProps: PropsWithChildren<LargeCardWrapperProps>) {
     const { title, subtitle, children, flex } = cardWrapperProps;
     return (
-        <Box sx={{ flex: flex, overflowX: 'auto' }}>
+        <Box sx={{ flex: flex }}>
             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: "space-between" }}>
                 <Typography sx={{
                     fontWeight: 600,
@@ -26,7 +26,7 @@ export default function LargeCardWrapper(cardWrapperProps: PropsWithChildren<Lar
                     color: '#343C6A',
                     cursor: 'pointer',
                     ":hover": {
-                        textDecoration: 'underline' 
+                        textDecoration: 'underline'
                     }
                 }}>{subtitle}</Typography></Box>
             <Box>{children}</Box>
