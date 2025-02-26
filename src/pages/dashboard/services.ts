@@ -4,7 +4,6 @@ import { BalanceDetail, ExpenseStatistic, UserDetail } from "../../types";
 
 export async function getExpenseStatistics(): Promise<AxiosResponse<ExpenseStatistic> | string> {
     try {
-        throw new Error('Not implemented');
         const result = await apiClient.get('api/ExpenseStatistics');
         return result;
     } catch (error) {
