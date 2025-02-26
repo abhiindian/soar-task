@@ -113,7 +113,7 @@ export default function Layout({ children }: React.PropsWithChildren<LayoutProps
                     <IconButton
                         aria-label="open drawer"
                         edge="start"
-                        onClick={handleDrawerToggle}
+                        onClick={() => handleDrawerToggle('')}
                         sx={{ ml: 2, mt: 1.5, color: "#343C6A", border: 'none', display: { sm: 'none' } }}
                     >
                         <MenuIcon />
