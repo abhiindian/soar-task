@@ -13,6 +13,5 @@ export default function CreditCardIcon() {
                 </clipPath>
             </defs>
         </svg>
-
     );
 }

@@ -10,7 +10,7 @@ type LargeCardWrapperProps = {
 export default function LargeCardWrapper(cardWrapperProps: PropsWithChildren<LargeCardWrapperProps>) {
     const { title, subtitle, children, flex } = cardWrapperProps;
     return (
-        <Box sx={{ flex: flex }}>
+        <Box sx={{ flex: flex, overflowX: 'auto' }}>
             <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: "space-between" }}>
                 <Typography sx={{
                     fontWeight: 600,
